@@ -3,20 +3,12 @@ export const ORDER_STATUS ={
       label: "Pendiente",
       color: 'primary'
     },
-    'procesado':{
+    'en proceso':{
       label: "Procesado",
-      color: 'warning'
-    },
-    'enviado':{
-      label: "Enviado",
       color: 'warning'
     },
     'entregado':{
       label: "Entregado",
-      color: 'succes'
-    },
-    'fallido':{
-      label: "Fallido",
-      color: 'danger'
-    },
+      color: 'success'
+    }
   }
