@@ -1,7 +1,8 @@
 <div class="product-page" *ngIf="product">
     <div class="grid">
-        <div class="col-6">
+        <div class="col-6" style="text-align: center;">
             <img
+            style="width: 50%;"
             crossorigin="anonymous"
             [routerLink]="'/products/' + product.id"
             [src]="base+product.image"
