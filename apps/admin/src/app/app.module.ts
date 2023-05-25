@@ -53,7 +53,7 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        component: DashboardComponent,
+        component: CategoriesListComponent,
       },
       {
         path: 'dashboard',
