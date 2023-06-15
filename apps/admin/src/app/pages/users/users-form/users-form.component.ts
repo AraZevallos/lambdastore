@@ -13,8 +13,7 @@ declare const require;
 @Component({
   selector: 'frontend-users-form',
   templateUrl: './users-form.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class UsersFormComponent implements OnInit {
   form: FormGroup;
@@ -29,7 +28,7 @@ export class UsersFormComponent implements OnInit {
     private usersService: UsersService,
     private location: Location,
     private route: ActivatedRoute
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this._initUserForm();
@@ -43,25 +42,26 @@ export class UsersFormComponent implements OnInit {
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
-      isAdmin: [false],
+      isAdmin: [true],
       street: [''],
       apartment: [''],
       zip: [''],
       city: [''],
-      country: ['']
+      country: [''],
     });
   }
 
-  private _getCountries(){
-    countriesLib.registerLocale(require("i18n-iso-countries/langs/en.json"));
-    this.countries= Object.entries(countriesLib.getNames("en", {select: "official"})).map(entry =>{
+  private _getCountries() {
+    countriesLib.registerLocale(require('i18n-iso-countries/langs/en.json'));
+    this.countries = Object.entries(
+      countriesLib.getNames('en', { select: 'official' })
+    ).map((entry) => {
       return {
         id: entry[0],
-        name: entry[1]
-      }
-    })
+        name: entry[1],
+      };
+    });
     console.log(this.countries);
-    
   }
 
   private _addUser(user: User) {
@@ -70,7 +70,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: `User ${user.name} is created!`
+          detail: `User ${user.name} is created!`,
         });
         timer(2000)
           .toPromise()
@@ -82,7 +82,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'User is not created!'
+          detail: 'User is not created!',
         });
       }
     );
@@ -94,21 +94,21 @@ export class UsersFormComponent implements OnInit {
       email: user.email,
       password: user.password,
       phone: user.phone,
-  //    token: string;
+      //    token: string;
       isAdmin: user.isAdmin,
       street: user.street,
       apartment: user.apartment,
       city: user.city,
       country: user.country,
       zip: user.zip,
-    }
+    };
 
-    this.usersService.updateUser(userTemp,user.id).subscribe(
+    this.usersService.updateUser(userTemp, user.id).subscribe(
       () => {
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
-          detail: 'User is updated!'
+          detail: 'User is updated!',
         });
         timer(2000)
           .toPromise()
@@ -120,7 +120,7 @@ export class UsersFormComponent implements OnInit {
         this.messageService.add({
           severity: 'error',
           summary: 'Error',
-          detail: 'User is not updated!'
+          detail: 'User is not updated!',
         });
       }
     );
@@ -148,7 +148,7 @@ export class UsersFormComponent implements OnInit {
       }
     });
   }
-  onSubmit(){
+  onSubmit() {
     this.isSubmitted = true;
     if (this.form.invalid) {
       return;
@@ -164,7 +164,7 @@ export class UsersFormComponent implements OnInit {
       apartment: this.userForm.apartment.value,
       zip: this.userForm.zip.value,
       city: this.userForm.city.value,
-      country: this.userForm.country.value
+      country: this.userForm.country.value,
     };
     if (this.editmode) {
       this._updateUser(user);
@@ -173,8 +173,8 @@ export class UsersFormComponent implements OnInit {
     }
   }
 
- getback(){
-  this.location.back();
+  getback() {
+    this.location.back();
   }
 
   get userForm() {

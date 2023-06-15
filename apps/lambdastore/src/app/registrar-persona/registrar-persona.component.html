@@ -1,0 +1,76 @@
+<h3>
+  ¡Bienvenido a nuestra comunidad de coleccionistas y jugadores apasionados!
+</h3>
+<h4>
+  Regístrate y únete a la diversión: ¡Explora nuestro universo de juguetes de
+  colección y accesorios gamer!
+</h4>
+
+<div class="grid mb-5">
+  <div class="col-12">
+    <form
+      [formGroup]="registrarForm.formulario"
+      (ngSubmit)="registrarUsuario()"
+    >
+      <div class="p-fluid p-formgrid grid">
+        <div class="field col-4">
+          <label for="name">Name</label>
+          <input formControlName="name" id="name" type="text" pInputText />
+        </div>
+        <div class="field col-4">
+          <label for="email">Email</label>
+          <input formControlName="email" id="email" type="text" pInputText />
+        </div>
+        <div class="field col-4">
+          <label for="password">Password</label>
+          <input
+            formControlName="password"
+            id="password"
+            type="password"
+            pInputText
+          />
+        </div>
+        <div class="field col-4">
+          <label for="color">Phone</label><br />
+          <p-inputMask
+            mask="(999) 999-9999"
+            formControlName="phone"
+            placeholder="(999) 999-9999"
+          ></p-inputMask>
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid grid">
+        <div class="field col-4">
+          <label for="street">Street</label>
+          <input formControlName="street" id="street" type="text" pInputText />
+        </div>
+        <div class="field col-4">
+          <label for="street">Apartment</label>
+          <input
+            formControlName="apartment"
+            id="apartment"
+            type="text"
+            pInputText
+          />
+        </div>
+        <div class="field col-4">
+          <label for="street">Zip Code</label>
+          <input formControlName="zip" id="zip" type="text" pInputText />
+        </div>
+        <div class="field col-4">
+          <label for="city">City</label>
+          <input formControlName="city" id="city" type="text" pInputText />
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center">
+        <button
+          pButton
+          type="submit"
+          label="Registrarse"
+          icon="pi pi-send"
+        ></button>
+      </div>
+    </form>
+  </div>
+</div>

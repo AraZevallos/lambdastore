@@ -23,8 +23,22 @@ import { ToastModule } from 'primeng/toast';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NgxStripeModule } from 'ngx-stripe';
+import { RegistrarPersonaComponent } from './registrar-persona/registrar-persona.component';
+import { RegistrarForm } from './registrar-persona/registrar.form';
 
-const routes: Routes = [{ path: '', component: HomePageComponent }];
+// PRIMENG
+import { InputTextModule } from 'primeng/inputtext';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputMaskModule } from 'primeng/inputmask';
+import { TagModule } from 'primeng/tag';
+import { FieldsetModule } from 'primeng/fieldset';
+
+const routes: Routes = [
+  { path: '', component: HomePageComponent },
+  { path: 'register', component: RegistrarPersonaComponent },
+];
 
 @NgModule({
   declarations: [
@@ -34,8 +48,15 @@ const routes: Routes = [{ path: '', component: HomePageComponent }];
     FooterComponent,
     NavComponent,
     MessagesComponent,
+    RegistrarPersonaComponent,
   ],
   imports: [
+    InputTextModule,
+    DropdownModule,
+    ButtonModule,
+    TagModule,
+    FieldsetModule,
+    InputMaskModule,
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
@@ -43,14 +64,18 @@ const routes: Routes = [{ path: '', component: HomePageComponent }];
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     AccordionModule,
+    ReactiveFormsModule,
     ProductsModule,
     UiModule,
     OrdersModule,
     ToastModule,
     UsersModule,
-    NgxStripeModule.forRoot('pk_test_51LN2VQG9VZofBzhLBPYsbVZ3sXrfdgruGjU3xYaBDcZjq8cC4EokTuHP9cMxU3iYniJV2IW9WgNMx8XWSE1Z7N7700B4Ky1RbC')
+    NgxStripeModule.forRoot(
+      'pk_test_51LN2VQG9VZofBzhLBPYsbVZ3sXrfdgruGjU3xYaBDcZjq8cC4EokTuHP9cMxU3iYniJV2IW9WgNMx8XWSE1Z7N7700B4Ky1RbC'
+    ),
   ],
   providers: [
+    RegistrarForm,
     MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],
