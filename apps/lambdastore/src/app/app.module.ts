@@ -34,10 +34,15 @@ import { DropdownModule } from 'primeng/dropdown';
 import { InputMaskModule } from 'primeng/inputmask';
 import { TagModule } from 'primeng/tag';
 import { FieldsetModule } from 'primeng/fieldset';
+import { ContactoComponent } from './contacto/contacto.component';
+import { ComentarioForm } from './contacto/comentario.form';
+import {EditorModule} from 'primeng/editor';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent },
   { path: 'register', component: RegistrarPersonaComponent },
+  { path: 'contact', component: ContactoComponent },
 ];
 
 @NgModule({
@@ -49,6 +54,7 @@ const routes: Routes = [
     NavComponent,
     MessagesComponent,
     RegistrarPersonaComponent,
+    ContactoComponent,
   ],
   imports: [
     InputTextModule,
@@ -58,6 +64,8 @@ const routes: Routes = [
     FieldsetModule,
     InputMaskModule,
     BrowserModule,
+    InputTextareaModule,
+    EditorModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     HttpClientModule,
@@ -76,6 +84,7 @@ const routes: Routes = [
   ],
   providers: [
     RegistrarForm,
+    ComentarioForm,
     MessageService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
   ],

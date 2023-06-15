@@ -44,6 +44,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { FileUploadModule } from 'primeng/fileupload';
 import { NgxStripeModule } from 'ngx-stripe';
+import { ComentariosComponent } from './pages/comentarios/comentarios.component';
 
 const routes: Routes = [
   {
@@ -103,6 +104,10 @@ const routes: Routes = [
         path: 'orders/:id',
         component: OrdersDetailComponent,
       },
+      {
+        path:'comments',
+        component:ComentariosComponent
+      }
     ],
   },
 ];
@@ -122,6 +127,7 @@ const routes: Routes = [
     OrdersDetailComponent,
     UsersListComponent,
     UsersFormComponent,
+    ComentariosComponent,
   ],
   imports: [
     BrowserModule,

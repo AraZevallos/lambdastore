@@ -1,0 +1,57 @@
+<h3>Tu voz importa: Comparte tus comentarios con nosotros</h3>
+<h4>
+  Nos esforzamos por mejorar constantemente. Cuéntanos tus quejas y sugerencias
+  para brindarte una experiencia aún mejor.
+</h4>
+
+<div class="grid mb-5">
+  <div class="col-12">
+    <form [formGroup]="comentarioForm.formulario" (ngSubmit)="submit()">
+      <div class="p-fluid p-formgrid grid">
+        <div class="field col-4">
+          <label for="name">Nombres</label>
+          <input formControlName="nombre" id="name" type="text" pInputText />
+        </div>
+        <div class="field col-4">
+          <label for="email">Apellidos</label>
+          <input
+            formControlName="apellidos"
+            id="email"
+            type="text"
+            pInputText
+          />
+        </div>
+        <div class="field col-4">
+          <label for="email">Correo</label>
+          <input
+            formControlName="correo"
+            id="email"
+            type="email"
+            pInputText
+          />
+        </div>
+      </div>
+      <div class="p-fluid p-formgrid grid">
+        <div class="field col-12">
+          <label for="comentario">Comentario o queja</label>
+          <textarea
+            rows="5"
+            cols="30"
+            pInputTextarea
+            autoResize="autoResize"
+            formControlName="commentary"
+          ></textarea>
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: center">
+        <button
+          pButton
+          type="submit"
+          label="Enviar comentario"
+          icon="pi pi-send"
+        ></button>
+      </div>
+    </form>
+  </div>
+</div>
