@@ -45,7 +45,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { FileUploadModule } from 'primeng/fileupload';
 import { NgxStripeModule } from 'ngx-stripe';
 import { ComentariosComponent } from './pages/comentarios/comentarios.component';
-
+import {ChartModule} from 'primeng/chart';
 const routes: Routes = [
   {
     path: '',
@@ -144,6 +144,7 @@ const routes: Routes = [
     TableModule,
     InputTextModule,
     ToastModule,
+    ChartModule,
     ConfirmDialogModule,
     ColorPickerModule,
     InputNumberModule,

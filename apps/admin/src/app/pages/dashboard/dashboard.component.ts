@@ -10,6 +10,7 @@ import { UsersService } from '../../../../../../libs/users/src/lib/services/user
 })
 export class DashboardComponent implements OnInit {
   statistics = [];
+  basicData: any;
   numbre : any;
   constructor(
     private productService: ProductsService,
@@ -18,6 +19,7 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     combineLatest([
       this.ordersService.getOrdersCount(),
       this.productService.getProductsCount(),
@@ -25,7 +27,24 @@ export class DashboardComponent implements OnInit {
       this.ordersService.getTotalSales()
     ]).subscribe((values) => {
       this.statistics = values;
+      this.basicData = {
+        labels: ['Junio', 'Julio'],
+        datasets: [
+            {
+              label: 'Ingresos',
+                backgroundColor: '#42A5F5',
+                data: [this.statistics[3], this.statistics[3]-300]
+            },
+            {
+                label: 'Egresos',
+                backgroundColor: '#FFA726',
+                data: [this.statistics[3]-2100, this.statistics[3]-100]
+            }
+        ]
+    };
     });
+
+    
   }
 
 }
