@@ -1,0 +1,60 @@
+<h3>Mi Historial de Compras: Explora tus pedidos pasados</h3>
+<h4>
+  Revive tus emocionantes compras y mantén un registro de tus adquisiciones
+  anteriores en un solo lugar.
+</h4>
+<div *ngIf="!orders; then cargando; else cargo"></div>
+<ng-template #cargando>
+  <div>Hola</div>
+</ng-template>
+<ng-template #cargo>
+  <p-card header="Ordenes" subheader="Lista de Ordenes">
+    <div class="grid">
+      <div class="col-12">
+        <p-table
+          [value]="orders"
+          responsiveLayout="scroll"
+          styleClass="p-datatable-gridlines"
+        >
+          <ng-template pTemplate="header">
+            <tr>
+              <th pSortableColumn="user">
+                User <p-sortIcon field="user"></p-sortIcon>
+              </th>
+              <th pSortableColumn="totalPrice">
+                Precio Total <p-sortIcon field="totalPrice"></p-sortIcon>
+              </th>
+              <th pSortableColumn="dateOrdered">
+                Fecha del Pedido <p-sortIcon field="dateOrdered"></p-sortIcon>
+              </th>
+              <th pSortableColumn="status">
+                Estado <p-sortIcon field="status"></p-sortIcon>
+              </th>
+              <th style="text-align: center">Acciones</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-order>
+            <tr>
+              <td>{{ order.user.name }}</td>
+              <td>S/. {{ order.totalPrice }}</td>
+              <td>{{ order.dateOrdered | date: 'short' }}</td>
+              <td>
+                <p-tag
+                  [value]="orderStatus[order.status].label"
+                  [severity]="orderStatus[order.status].color"
+                ></p-tag>
+              </td>
+              <td style="text-align: center">
+                <p-button
+                  (click)="showOrder(order.id)"
+                  styleClass="p-button-success"
+                  icon="pi pi-eye"
+                ></p-button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </p-card>
+</ng-template>

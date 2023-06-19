@@ -1,0 +1,133 @@
+<div *ngIf="!order; then cargando; else mostrar"></div>
+
+<ng-template #cargando> cargando </ng-template>
+<ng-template #mostrar>
+  <h3>
+    Sigue el camino de tu pedido
+    <span style="font-weight: 20px; color: #fb7e14">{{ order.id }}</span>
+  </h3>
+  <h4>
+    Mantente informado sobre el progreso de tu pedido y disfruta de la emoción
+    de verlo llegar a tus manos
+  </h4>
+
+  <div *ngIf="order.status === 'pendiente'" class="animate__animated animate__zoomIn">
+    <h4 style="text-align: center">
+      ¡Hola! Tu pedido está en proceso y pendiente en nuestro almacén. ¡Pronto
+      lo enviaremos a tu dirección! Agradecemos tu paciencia y te mantendremos
+      informado. ¡Gracias por elegirnos!
+      <img
+        src="assets/images/pendiente.svg"
+        style="width: 25%"
+        alt="banner-img"
+      />
+    </h4>
+  </div>
+
+  <div *ngIf="order.status === 'procesado'" class="animate__animated animate__zoomIn">
+    <h4 style="text-align: center">
+      ¡Hola! Nos complace informarte que tu pedido está en proceso de ser
+      enviado. Nuestro equipo está preparando cuidadosamente tus artículos y
+      pronto los enviará a la dirección que proporcionaste. Te mantendremos
+      informado sobre el progreso de envío para que puedas seguir de cerca el
+      camino de tus productos. ¡Gracias por tu compra y por ser parte de nuestra
+      comunidad!
+    </h4>
+    <div
+      style="
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p-progressBar [value]="25" [style]="{ width: '500px' }"></p-progressBar>
+    </div>
+    <div style="text-align: center">
+      <img
+        src="assets/images/procesado.svg"
+        style="width: 25%"
+        alt="banner-img"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="order.status === 'enviado'" class="animate__animated animate__zoomIn">
+    <h4 style="text-align: center">
+      ¡Gran noticia! Queremos informarte que tu pedido ha sido enviado con
+      éxito. Hemos preparado cuidadosamente tus artículos y los hemos entregado
+      al servicio de envío. Pronto estarán en camino hacia tu dirección.
+      ¡Prepárate para recibir tu emocionante paquete! Te proporcionaremos el
+      número de seguimiento para que puedas rastrear tu pedido y estar al tanto
+      de su progreso. ¡Gracias por tu confianza y apoyo!
+    </h4>
+    <div
+      style="
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p-progressBar [value]="50" [style]="{ width: '500px' }"></p-progressBar>
+    </div>
+    <div style="text-align: center">
+      <img
+        src="assets/images/enviado.svg"
+        style="width: 25%"
+        alt="banner-img"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="order.status === 'entregado'" class="animate__animated animate__zoomIn">
+    <div
+      style="
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p-progressBar [value]="100" [style]="{ width: '500px' }"></p-progressBar>
+    </div>
+    <h4 style="text-align: center">
+      ¡Enhorabuena! ¡Tu pedido ha sido entregado con éxito! ¡Esperamos que
+      disfrutes al máximo tus nuevos artículos! ¡Gracias por elegirnos!
+    </h4>
+    <div style="text-align: center">
+      <img
+        src="assets/images/entregado.svg"
+        style="width: 25%"
+        alt="banner-img"
+      />
+    </div>
+  </div>
+
+  <div *ngIf="order.status === 'fallido'" class="animate__animated animate__zoomIn">
+    <div
+      style="
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <p-progressBar [value]="0" [style]="{ width: '500px' }"></p-progressBar>
+    </div>
+    <h4 style="text-align: center">
+      Lamentamos informarte que tu pedido ha experimentado una falla. Nos
+      pondremos en contacto contigo de inmediato para resolver cualquier
+      problema y encontrar la mejor solución. Disculpa las molestias y gracias
+      por tu comprensión.
+    </h4>
+
+    <div style="text-align: center">
+        <img
+          src="assets/images/fallido.svg"
+          style="width: 25%"
+          alt="banner-img"
+        />
+      </div>
+  </div>
+</ng-template>
